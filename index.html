@@ -1389,7 +1389,7 @@
     <script>
         (function () {
 
-            const countryName = jQuery('body').data('ls_country');
+            const countryName = $('body').data('ls_country');
 
             function convertPrices() {
                 if (countryName === 'ua') {
@@ -1406,17 +1406,15 @@
                     }
 
                     $(":contains(руб),:contains(р.)").not('script,style,link').each(function () {
-                        const self = jQuery(this);
+                        const self = $(this);
 
                         if (self.children().length !== 0) {
                             return;
                         }
-
-                        const text = self.text();
+                        let text = self.text();
 
                         if (regex.test(text)) {
                             text = text.replace(regex, convert);
-
                             self.text(text);
                         }
                     });
